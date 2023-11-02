@@ -1,6 +1,9 @@
 import { cardPelicula } from "./Components/cardPelicula.js";
 import { PeliculaDetalle } from "../Services/servicePelicula.js";
-
+window.addEventListener("scroll", function () {
+  let header = document.querySelector("header");
+  header.classList.toggle("sticky", window.scrollY > 0);
+});
 window.onload = async function () {
   const urlParams = new URLSearchParams(window.location.search);
   const peliculaId = urlParams.get("id");
@@ -21,4 +24,3 @@ async function cargarPelicula(peliculaId) {
   document.getElementById("content-pelicula").innerHTML = Cartelera;
   console.log(pelicula);
 }
-

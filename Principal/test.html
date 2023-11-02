@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Fondo semi-transparente */
+            z-index: 100;
+            /* Superponer sobre el contenido */
+            width: 100%;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar li {
+            margin: 0 20px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .content {
+            height: 1000px;
+            /* Altura de contenido de ejemplo */
+            background-image: url('tu-imagen-de-fondo.jpg');
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+        }
+
+        /* Estilo para el contenido cuando se superpone al navbar */
+        .content.overlay {
+            position: relative;
+            top: -50px;
+            /* Ajusta esto según el alto del navbar */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Acerca de</a></li>
+            <li><a href="#">Servicios</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <!-- Contenido de la página -->
+    </div>
+</body>
+
+</html>

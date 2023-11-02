@@ -35,9 +35,25 @@ export async function cargarFunciones() {
   });
   console.log(funciones);
 }
+document.getElementById("buscar").addEventListener("click", (e) => {
+  e.preventDefault();
+  buscarFunciones();
+});
+export async function buscarFunciones() {
+  let generoId;
+  let fecha = document.getElementById("fecha").value.toLocaleString();
+  let titulo = document.getElementById("titulo").value;
+  let genero = document.getElementById("genero").value;
+  if (genero != "") {
+    generoId = parseInt(genero);
+  } else {
+    generoId = "";
+  }
 
-export async function cargarFuncionesFiltro(fecha, titulo, genero) {
-  let funciones = await ArregloFunciones.funciones(fecha, titulo, genero);
+  cargarFuncionesFiltro(fecha, titulo, generoId);
+}
+export async function cargarFuncionesFiltro(fecha, titulo, generoId) {
+  let funciones = await ArregloFunciones.funciones(fecha, titulo, generoId);
   const peliculas = new Set();
   const funcionesFiltradas = funciones.filter((funcion) => {
     if (!peliculas.has(funcion.pelicula.peliculaId)) {
@@ -57,6 +73,13 @@ export async function cargarFuncionesFiltro(fecha, titulo, genero) {
     )
     .join("");
   document.getElementById("funcion").innerHTML = Cartelera;
+  const botones = document.querySelectorAll(".navigateDetalle");
+  botones.forEach((boton) => {
+    boton.addEventListener("click", (e) => {
+      e.preventDefault();
+      navegarDetallePelicula(e.target.id);
+    });
+  });
   console.log(funciones);
 }
 // document.addEventListener("click", (e) => {

@@ -33,17 +33,10 @@ export const cardPelicula = (
                         </li>
                     </ul>
                     <p class="description">${sinopsis}</p>
-                    <a href="/showcase/boleteria_plus.aspx?filmid=2682" id="ctl00_Contenido_link1"
+                    <a href="#" id="ctl00_Contenido_link1"
                         class="add-btn">ENTRADAS</a>
-                    <div class="rate-box">
-                        <a href="/showcase/boleteria_plus.aspx?filmid=2682" id="ctl00_Contenido_link2"><i
-                                class="lni lni-calendar"></i></a>
-                    </div>
-
-
                     <div class="block mt-5 video-player video-container">
-
-                            <iframe width="400" height="230" src="${urlVideo}" title="Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe width="400" height="230" src="${urlVideo}" title="Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
 
                 </div>

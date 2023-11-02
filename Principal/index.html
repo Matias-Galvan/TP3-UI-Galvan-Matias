@@ -6,9 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Page Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" />
-  <script src="https://kit.fontawesome.com/1d5d7f018b.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="./index.css" />
+  <link rel="stylesheet" type="text/css" href="../Pelicula/pelicula.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -19,118 +18,64 @@
 </head>
 
 <body>
-  <main id="header">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">CineFrontend</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Dropdown
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#" id="accion">Acción</a></li>
-                <li><a class="dropdown-item" href="#" id="2">Aventuras</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-            <input type="date" id="fecha" name="fecha">
-          </form>
-        </div>
-      </div>
-    </nav>
+  <main id="header" class="header">
+    <header>
+      <a href="../Principal/index.html" class="logo">Cine PS</a>
+      <ul>
+        <li><a href="../Principal/index.html">Inicio</a></li>
+        <li><a href="../Pelicula/pelicula.html">Peliculas</a></li>
+        <li><a href="../Funcion/funcion.html">Funciones</a></li>
+        <li><a href="../Reserva/reserva.html">Reservas</a></li>
+        <li><a href="../Usuario/usuario.html">Usuarios</a></li>
+        <li><a href="../Login/login.html">Login</a></li>
+      </ul>
+    </header>
+
   </main>
   <!-- contenido -->
-  <main id="content">
+  <section class="banner"></section>
 
-    <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class="active"
-          aria-current="true"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item">
-          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-          </svg>
-          <div class="container">
-            <div class="carousel-caption text-start">
-              <h1>Example headline.</h1>
-              <p class="opacity-75">Some representative placeholder content for the first slide of the carousel.</p>
-              <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item active">
-          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-          </svg>
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Another example headline.</h1>
-              <p>Some representative placeholder content for the second slide of the carousel.</p>
-              <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-          </svg>
-          <div class="container">
-            <div class="carousel-caption text-end">
-              <h1>One more for good measure.</h1>
-              <p>Some representative placeholder content for the third slide of this carousel.</p>
-              <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-
+  <main id="content" class="contenido">
 
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
+    <div class="container">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <input type="search" placeholder="Título..." aria-label="Search" id="titulo" style="width: 300px;">
+
+          <select id="genero" aria-placeholder="Seleccione género" placeholder="Seleccione género"
+            style="width: 300px;">
+            <option value="" selected>Seleccione género...</option>
+            <option value="1">1 Acción</option>
+            <option value="2">2 Aventuras</option>
+            <option value="3">3 Ciencia ficción</option>
+            <option value="4">4 Comedia</option>
+            <option value="5">5 Documental</option>
+            <option value="6">6 Drama</option>
+            <option value="7">7 Fantasía</option>
+            <option value="8">8 Musical</option>
+            <option value="9">9 Suspenso</option>
+            <option value="10">10 Terror</option>
+          </select>
+          <input type="date" placeholder="Ingrese fecha..." aria-label="Date" id="fecha" style="width: 200px;">
+          <button class="btn btn-outline-success filtros" type="submit" id="buscar">Buscar</button>
+        </div>
+      </nav>
+    </div>
     <div class="container marketing">
+
       <div class="album py-5">
+
         <div class="container">
+          <div class="col-12">
+            <div class="section-title">
+              <h6>EN CARTELERA</h6>
+              <h2>Películas</h2>
+            </div>
+          </div>
 
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="funcion">
           </div>
