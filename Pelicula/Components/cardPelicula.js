@@ -24,6 +24,30 @@ export const cardPelicula = (
   return `<section class="content-section">
     <div class="container">
         <div class="row">
+        <div class="modal" id="wizard-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="container mt-3">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
+                            aria-valuemin="0" aria-valuemax="100" id="progress-bar"></div>
+                    </div>
+                </div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">Asistente - Paso 1</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Contenido del Paso 1</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="prev-step" class="btn btn-secondary">Anterior</button>
+                    <button id="next-step" class="btn btn-primary">Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
             <div class="col-lg-8">
                 <div class="movie-info-box">
                     <h2 class="name"><strong>${titulo}</strong></h2>
@@ -33,10 +57,28 @@ export const cardPelicula = (
                         </li>
                     </ul>
                     <p class="description">${sinopsis}</p>
-                    <a href="#" id="ctl00_Contenido_link1"
-                        class="add-btn">ENTRADAS</a>
+                        <button id="botonFunciones" class="btn btn-primary add-btn" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false">VER FUNCIONES</button>
+                  <div class="collapse" id="collapseExample">
+                    <div class="card card-body" style="
+                    margin-top: 12px;
+                ">
+                    <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-center">Código</th>
+                            <th scope="col" class="text-center">Fecha</th>
+                            <th scope="col" class="text-center">Horario</th>
+                            <th scope="col" class="text-center">Sala</th>
+                            <th scope="col" class="text-center">Capacidad</th>
+                            <th scope="col" class="text-center">Acciones</th>
+                        <tr>
+                    </thead>                    
+                <tbody id = "tabla-alquileres"></tbody>    
+                </table>
+                    </div>
+                  </div>
                     <div class="block mt-5 video-player video-container">
-                        <iframe width="400" height="230" src="${urlVideo}" title="Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe width="600" height="400" src="${urlVideo}" title="Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
 
                 </div>

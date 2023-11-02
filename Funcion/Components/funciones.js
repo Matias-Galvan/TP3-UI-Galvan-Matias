@@ -82,10 +82,6 @@ export async function cargarFuncionesFiltro(fecha, titulo, generoId) {
   });
   console.log(funciones);
 }
-// document.addEventListener("click", (e) => {
-//   localStorage.setItem("PeliculaIdDetalle", e.target.id);
-//   navegarDetallePelicula(e.target.id);
-// });
 
 export async function DetalleFuncion(funcionId) {
   let funciones = await ArregloFunciones.funciones("", "", "");
