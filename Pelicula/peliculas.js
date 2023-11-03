@@ -1,8 +1,12 @@
 import { cardPelicula } from "./Components/cardPelicula.js";
 import { PeliculaDetalle } from "../Services/servicePelicula.js";
+import { DetalleCompra } from "../Ticket/Components/cardTicket.js";
+import { listadoTickets } from "../Ticket/Components/detalleDeCompra.js";
 import {
   ArregloFunciones,
   ArregloFuncionesDisponibles,
+  ArregloFuncion,
+  ComprarTicketResponse,
 } from "../Services/serviceFuncion.js";
 import { TablaFunciones } from "./Components/cardTablaFunciones.js";
 window.addEventListener("scroll", function () {
@@ -15,57 +19,6 @@ window.onload = async function () {
   await cargarPelicula(peliculaId);
   BotonTexto();
 };
-
-function cargarModal() {
-  document.addEventListener("click", function () {
-    const startWizardBtn = document.getElementById("start-wizard");
-    const wizardModal = new bootstrap.Modal(
-      document.getElementById("wizard-modal")
-    );
-    const modalTitle = document.getElementById("modal-title");
-    const prevStepBtn = document.getElementById("prev-step");
-    const nextStepBtn = document.getElementById("next-step");
-    const progressBar = document.getElementById("progress-bar");
-
-    let currentStep = 1;
-    const totalSteps = 3; // Cambia esto al número de pasos que tengas
-
-    // Función para mostrar el paso actual
-    function showStep(step) {
-      modalTitle.textContent = "Asistente - Paso " + step;
-      const modalBody = document.querySelector(".modal-body");
-      modalBody.textContent = "Contenido del Paso " + step;
-
-      // Actualizar la barra de progreso
-      const progress = ((step - 1) / (totalSteps - 1)) * 100;
-      progressBar.style.width = progress + "%";
-      progressBar.setAttribute("aria-valuenow", progress);
-    }
-
-    // Evento para avanzar al siguiente paso
-    nextStepBtn.addEventListener("click", function () {
-      if (currentStep < totalSteps) {
-        currentStep++;
-        showStep(currentStep);
-      }
-    });
-
-    // Evento para retroceder al paso anterior
-    prevStepBtn.addEventListener("click", function () {
-      if (currentStep > 1) {
-        currentStep--;
-        showStep(currentStep);
-      }
-    });
-
-    // Evento para iniciar el asistente al hacer clic en el botón
-    startWizardBtn.addEventListener("click", function () {
-      currentStep = 1;
-      showStep(currentStep);
-      wizardModal.show();
-    });
-  });
-}
 
 async function cargarPelicula(peliculaId) {
   let pelicula = await PeliculaDetalle.peliculaDetalle(peliculaId);
@@ -88,7 +41,8 @@ async function cargarPelicula(peliculaId) {
   botones.forEach((boton) => {
     boton.addEventListener("click", (e) => {
       e.preventDefault();
-      cargarModal();
+      console.log(e.target.id);
+      ComprarTicket(e.target.id);
     });
   });
   console.log(pelicula);
@@ -111,7 +65,7 @@ async function CargarFuncionesDisponibles(funciones) {
       )
     )
     .join("");
-  document.getElementById("tabla-alquileres").innerHTML = llenarTabla;
+  document.getElementById("tabla-funciones").innerHTML = llenarTabla;
 }
 function BotonTexto() {
   const button = document.querySelector('[data-bs-target="#collapseExample"]');
@@ -122,4 +76,64 @@ function BotonTexto() {
   collapse.addEventListener("hidden.bs.collapse", function () {
     button.textContent = "VER FUNCIONES";
   });
+}
+
+export async function ComprarTicket(FuncionId) {
+  let funcion = await ArregloFuncion.FuncionDisponible(FuncionId);
+  console.log(funcion);
+  let DetalleTicketRequest = DetalleCompra(
+    funcion.pelicula.poster,
+    new Date(funcion.fecha).toLocaleDateString(),
+    funcion.horario,
+    funcion.sala.nombre,
+    funcion.sala.capacidad,
+    funcion.pelicula.titulo,
+    funcion.pelicula.genero.nombre,
+    funcion.funcionId
+  );
+  document.getElementById("DetalleTicketModal").innerHTML =
+    DetalleTicketRequest;
+  const boton = document.querySelector(".modalComprarTicket");
+  boton.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log(e.target.id);
+    ComprarTicketRequest(e.target.id, boton);
+  });
+}
+
+export async function ComprarTicketRequest(FuncionId, boton) {
+  const id = parseInt(FuncionId);
+  const cantidad = parseInt(document.getElementById("recipient-name").value);
+  const nombre = document.getElementById("message-text").value;
+  const body = {
+    cantidad: cantidad,
+    usuario: nombre,
+  };
+  const response = await ComprarTicketResponse(id, body);
+  let detalle = response.tickets
+    .map((ticket) =>
+      listadoTickets(
+        ticket.ticketId,
+        response.funcion.fecha,
+        response.funcion.horario,
+        response.funcion.pelicula.poster,
+        response.funcion.pelicula.titulo,
+        response.funcion.sala.nombre,
+        response.funcion.sala.capacidad,
+        response.funcion.usuario
+      )
+    )
+    .join("");
+  document.getElementById("notificacion-compra").innerHTML = detalle;
+  const miModal = new bootstrap.Modal(document.getElementById("exampleModal"));
+  miModal.hide();
+  const toastLiveExample = document.getElementById("liveToast");
+
+  if (boton) {
+    const toastBootstrap =
+      bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+    boton.addEventListener("click", () => {
+      toastBootstrap.show();
+    });
+  }
 }

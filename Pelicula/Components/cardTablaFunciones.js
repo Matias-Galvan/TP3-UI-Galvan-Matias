@@ -6,7 +6,10 @@ export const TablaFunciones = (FuncionId, Fecha, Horario, Sala, Capacidad) => {
         <td class = "text-center">${Horario}</td>
         <td class = "text-center">${Sala}</td>
         <td class = "text-center">${Capacidad}</td>
-        <td class = "text-center"><button id="start-wizard" class="modalComprar">COMPRAR ENTRADAS</button></td>
+        <td class = "text-center">    <button type="button" id="${FuncionId}" class="btn btn-primary modalComprar" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        data-bs-whatever="@getbootstrap">COMPRAR ENTRADAS</button>
+
+</td>
     <tr>
     `;
 };

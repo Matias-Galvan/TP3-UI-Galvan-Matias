@@ -73,7 +73,7 @@ export const cardPelicula = (
                             <th scope="col" class="text-center">Acciones</th>
                         <tr>
                     </thead>                    
-                <tbody id = "tabla-alquileres"></tbody>    
+                <tbody id = "tabla-funciones"></tbody>    
                 </table>
                     </div>
                   </div>

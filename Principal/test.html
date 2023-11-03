@@ -14,99 +14,30 @@
 </head>
 
 <body>
-    <!-- <ol class="list-group">
-        <li class="list-group-item">
-            <h6 class="list-group-item-heading">Paso 1</h6>
-            <p class="list-group-item-text">Este es el primer paso del wizard.</p>
-        </li>
-        <li class="list-group-item">
-            <h6 class="list-group-item-heading">Paso 2</h6>
-            <p class="list-group-item-text">Este es el segundo paso del wizard.</p>
-        </li>
-        <li class="list-group-item">
-            <h6 class="list-group-item-heading">Paso 3</h6>
-            <p class="list-group-item-text">Este es el tercer paso del wizard.</p>
-        </li>
-    </ol> -->
+    <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
 
-    <div class="container mt-5">
-        <button id="start-wizard" class="btn btn-primary">Iniciar Asistente</button>
-    </div>
-
-    <div class="modal" id="wizard-modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="container mt-3">
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
-                            aria-valuemin="0" aria-valuemax="100" id="progress-bar"></div>
-                    </div>
-                </div>
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modal-title">Asistente - Paso 1</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Contenido del Paso 1</p>
-                </div>
-                <div class="modal-footer">
-                    <button id="prev-step" class="btn btn-secondary">Anterior</button>
-                    <button id="next-step" class="btn btn-primary">Siguiente</button>
-                </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="..." class="rounded me-2" alt="...">
+                <strong class="me-auto">Compra exitosa</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
             </div>
         </div>
     </div>
+    <script>
+        const toastTrigger = document.getElementById('liveToastBtn')
+        const toastLiveExample = document.getElementById('liveToast')
 
-
-
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
-    <script>document.addEventListener("DOMContentLoaded", function () {
-            const startWizardBtn = document.getElementById("start-wizard");
-            const wizardModal = new bootstrap.Modal(document.getElementById("wizard-modal"));
-            const modalTitle = document.getElementById("modal-title");
-            const prevStepBtn = document.getElementById("prev-step");
-            const nextStepBtn = document.getElementById("next-step");
-            const progressBar = document.getElementById("progress-bar");
-
-            let currentStep = 1;
-            const totalSteps = 3; // Cambia esto al número de pasos que tengas
-
-            // Función para mostrar el paso actual
-            function showStep(step) {
-                modalTitle.textContent = "Asistente - Paso " + step;
-                const modalBody = document.querySelector(".modal-body");
-                modalBody.textContent = "Contenido del Paso " + step;
-
-                // Actualizar la barra de progreso
-                const progress = (step - 1) / (totalSteps - 1) * 100;
-                progressBar.style.width = progress + "%";
-                progressBar.setAttribute("aria-valuenow", progress);
-            }
-
-            // Evento para avanzar al siguiente paso
-            nextStepBtn.addEventListener("click", function () {
-                if (currentStep < totalSteps) {
-                    currentStep++;
-                    showStep(currentStep);
-                }
-            });
-
-            // Evento para retroceder al paso anterior
-            prevStepBtn.addEventListener("click", function () {
-                if (currentStep > 1) {
-                    currentStep--;
-                    showStep(currentStep);
-                }
-            });
-
-            // Evento para iniciar el asistente al hacer clic en el botón
-            startWizardBtn.addEventListener("click", function () {
-                currentStep = 1;
-                showStep(currentStep);
-                wizardModal.show();
-            });
-        });
-
+        if (toastTrigger) {
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+            toastTrigger.addEventListener('click', () => {
+                toastBootstrap.show()
+            })
+        }
     </script>
 </body>
 
