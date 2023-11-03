@@ -1,19 +1,20 @@
-export const cardFuncion = (peliculaId, titulo, poster) => {
+export const cardFuncion = (funcionId, peliculaId, titulo, poster, genero) => {
   return `<div class="col">
-        <div class="card shadow-sm" id="${peliculaId}">
-            <img src="${poster}">
-          <div class="card-body">
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-              additional content. This content is a little bit longer.</p>
-              <h2>${titulo}</h2>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary" id="btn">Ver</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-              </div>
-            </div>
-          </div>
-        </div>
+  <div class="category-thumb">
+  <figure class="category-image" id="${funcionId}">
+      <img alt="Image" src="${poster}">
+  </figure>
+  <div class="category-content">
+      <ul class="tags">
+          <li>Estreno</li>
+      </ul>
+      <h3 class="name">${titulo}</h3>
+      <div class="play-btn">
+      <a href=".././Pelicula/pelicula.html" id="${peliculaId}" data-id="navPelicula" class="navigateDetalle">
+      Ver detalle</a>
+      </div><small class="details">${genero}</small>
+  </div>
+  </div>
       </div>`;
 };
 export default cardFuncion;
